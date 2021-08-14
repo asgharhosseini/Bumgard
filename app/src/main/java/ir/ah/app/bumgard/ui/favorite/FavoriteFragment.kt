@@ -11,7 +11,7 @@ import ir.ah.app.bumgard.other.*
 class FavoriteFragment : BaseFragment<FavoriteViewModel>(
     R.layout.fragment_favorite, FavoriteViewModel::class
 ) {
-    private val binding by viewBinding(FragmentSearchBinding::bind)
+    private val binding by viewBinding(FragmentFavoriteBinding::bind)
 
 
     override fun observeData() {
