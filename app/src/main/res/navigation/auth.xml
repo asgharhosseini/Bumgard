@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/auth">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth"
+    app:startDestination="@id/splashFragment">
 
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="ir.ah.app.bumgard.ui.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_introFragment"
+            app:destination="@id/introFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        tools:layout="@layout/fragment_intro"
+        android:name="ir.ah.app.bumgard.ui.intro.IntroFragment"
+        android:label="IntroFragment" >
+        <action
+            android:id="@+id/action_introFragment_to_singInFragment"
+            app:destination="@id/singInFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/singUpFragment"
+        tools:layout="@layout/fragment_sing_up"
+        android:name="ir.ah.app.bumgard.ui.auth.signup.SingUpFragment"
+        android:label="SingUpFragment" >
+        <action
+            android:id="@+id/action_singUpFragment_to_loginAgainFragment"
+            app:destination="@id/loginAgainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/singInFragment"
+        tools:layout="@layout/fragment_sing_in"
+        android:name="ir.ah.app.bumgard.ui.auth.singin.SingInFragment"
+        android:label="SingInFragment" >
+        <action
+            android:id="@+id/action_singInFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_singInFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_singInFragment_to_loginAgainFragment"
+            app:destination="@id/loginAgainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        tools:layout="@layout/fragment_forgot_password"
+        android:name="ir.ah.app.bumgard.ui.auth.forgotpassword.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" />
+    <fragment
+        android:id="@+id/loginAgainFragment"
+        tools:layout="@layout/fragment_login_again"
+        android:name="ir.ah.app.bumgard.ui.auth.loginagain.LoginAgainFragment"
+        android:label="LoginAgainFragment" />
 </navigation>

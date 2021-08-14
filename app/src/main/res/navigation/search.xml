@@ -3,11 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search"
-    app:startDestination="@id/searchFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/searchFragment"
         tools:layout="@layout/fragment_search"
         android:name="ir.ah.app.bumgard.ui.search.SearchFragment"
         android:label="SearchFragment" />
+    <include app:graph="@navigation/auth" />
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="ir.ah.app.bumgard.ui.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_auth"
+            app:destination="@id/auth"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_splashFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
 </navigation>
