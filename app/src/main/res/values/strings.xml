@@ -12,7 +12,7 @@
     <string name="skip">skip</string>
     <string name="getStart">Get Start</string>
     <string name="welcome">Welcome</string>
-    <string name="sing_in">Sing In</string>
+    <string name="sign_in">Sign In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="forgot_your_password">Forgot Your Password?</string>
@@ -21,4 +21,5 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="continue_with_your_social_account">continue with your social account</string>
     <string name="or">Or</string>
+    <string name="forgot_password">Forgot Password</string>
 </resources>
