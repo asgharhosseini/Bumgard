@@ -22,4 +22,5 @@
     <string name="continue_with_your_social_account">continue with your social account</string>
     <string name="or">Or</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="login_again">Login Again</string>
 </resources>
