@@ -23,6 +23,7 @@ class SplashFragment : BaseFragment<SplashViewModel>(
         super.observeData()
         lifecycleScope.launch {
             delay(2000)
+        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuth())
         }
     }
 

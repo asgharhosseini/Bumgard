@@ -9,4 +9,7 @@
     <string name="menu_favorite">Favorite</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_setting">Setting</string>
+    <string name="skip">skip</string>
+    <string name="getStart">Get Start</string>
+    <string name="welcome">Welcome</string>
 </resources>
