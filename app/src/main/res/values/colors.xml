@@ -23,4 +23,6 @@
     <color name="background_color">@color/purple_500</color>
     <color name="background_color_">@color/purple_200</color>
 
+    <color name="text_color_gray">#5D5D5D</color>
+
 </resources>
