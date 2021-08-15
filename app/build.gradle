@@ -113,4 +113,10 @@ dependencies {
 
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.3.0"
+
+
+    //viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    //circleindicator
+    implementation 'me.relex:circleindicator:2.1.6'
 }
