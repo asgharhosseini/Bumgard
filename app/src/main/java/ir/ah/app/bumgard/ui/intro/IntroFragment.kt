@@ -8,6 +8,7 @@ import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
+import ir.ah.app.bumgard.other.util.*
 import ir.ah.app.bumgard.ui.intro.adapter.*
 
 @AndroidEntryPoint
@@ -24,6 +25,8 @@ class IntroFragment : BaseFragment<IntroViewModel>(
 
     override fun setUpViews() {
         super.setUpViews()
+        onRegisterSuccessNavigationResultReceived()
+        onLoginSuccessNavigationResultReceived()
         binding.viewPager.adapter = IntroSliderAdapter()
         binding.indicator.setViewPager(binding.viewPager)
         binding.viewPager.isUserInputEnabled = false
@@ -46,5 +49,23 @@ class IntroFragment : BaseFragment<IntroViewModel>(
         }
     }
 
+    private fun onRegisterSuccessNavigationResultReceived() {
+        getNavigationResult<Boolean>(Constance.RESULT_REGISTER, findNavController())?.observe(viewLifecycleOwner) {
+            removeNavigationResult<Boolean>(Constance.RESULT_REGISTER)
+            if (it) {
+                setNavigationResult(true, Constance.RESULT_LOGIN)
+                findNavController().popBackStack()
+            }
+        }
+    }
+    private fun onLoginSuccessNavigationResultReceived() {
+        getNavigationResult<Boolean>(Constance.RESULT_LOGIN, findNavController())?.observe(viewLifecycleOwner) {
+            removeNavigationResult<Boolean>(Constance.RESULT_LOGIN)
+            if (it) {
+                setNavigationResult(true, Constance.RESULT_LOGIN)
+                findNavController().popBackStack()
+            }
+        }
+    }
 
 }
