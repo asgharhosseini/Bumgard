@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.splashFragment,R.id.singInFragment, R.id.singUpFragment, R.id.introFragment,R.id.loginAgainFragment -> {
+                R.id.splashFragment,R.id.singInFragment, R.id.singUpFragment, R.id.introFragment-> {
                     hideBottomNav()
                 }
             }

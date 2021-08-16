@@ -12,4 +12,22 @@
     <string name="skip">skip</string>
     <string name="getStart">Get Start</string>
     <string name="welcome">Welcome</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password">Forgot Your Password?</string>
+    <string name="don_t_have_an_account">Don’t Have An Account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="continue_with_your_social_account">continue with your social account</string>
+    <string name="or">Or</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login_again">Login Again</string>
+    <string name="user_email_is_empty">Email could not be empty</string>
+    <string name="user_password_is_empty">Password could not be empty</string>
+    <string name="user_confirm_password_is_empty">User Confirm Password could not be empty</string>
+    <string name="email_format_is_incorrect">Email format is incorrect</string>
+    <string name="password_and_password_verification_are_not_the_same">Password And Password Verification Are Not The Same</string>
+    <string name="password_must_be_longer_than_6_characters">Password must be longer than 6 characters</string>
+    <string name="confirm_password_must_be_longer_than_6_characters">Confirm Password must be longer than 6 characters</string>
 </resources>

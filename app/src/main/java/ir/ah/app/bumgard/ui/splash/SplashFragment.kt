@@ -9,9 +9,14 @@ import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
+import ir.ah.app.bumgard.other.util.*
+import ir.ah.app.bumgard.other.util.Constance.RESULT_LOGIN
+import ir.ah.app.bumgard.other.wrapper.*
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 import javax.inject.*
+
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<SplashViewModel>(
     R.layout.fragment_splash, SplashViewModel::class
@@ -21,15 +26,37 @@ class SplashFragment : BaseFragment<SplashViewModel>(
 
     override fun observeData() {
         super.observeData()
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             delay(2000)
-        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuth())
+            vm.splashEvent.collectLatest { event ->
+
+                when (event) {
+                    is SplashEvent.NavigateToAuth -> {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuth())
+                    }
+                    is SplashEvent.NavigateToSearch -> {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getLoginNavigationResult() {
+        getNavigationResult<Boolean>(
+            RESULT_LOGIN,
+            findNavController()
+        )?.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
+                mainActivity?.showBottomNav()
+            }
         }
     }
 
     override fun setUpViews() {
         super.setUpViews()
-
+        getLoginNavigationResult()
     }
 
 
