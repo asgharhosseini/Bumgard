@@ -24,5 +24,7 @@
     <color name="background_color_">@color/purple_200</color>
 
     <color name="text_color_gray">#5D5D5D</color>
+    <color name="twitter">#03A9F4</color>
+    <color name="facebook">#3B5998</color>
 
 </resources>

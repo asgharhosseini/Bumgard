@@ -20,6 +20,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -77,12 +78,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Or"
+        android:layout_marginTop="24dp"
+        android:text="@string/or"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -91,22 +92,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -132,19 +117,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:paddingStart="32dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="12dp"
         android:text="@string/sign_in"
         android:textColor="@color/text_color_gray"
         app:icon="@drawable/ic_facebook"
-        app:iconTint="#3B5998"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        app:iconTint="@color/facebook"
         app:layout_constraintEnd_toStartOf="@+id/btnSingInTwitter"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
@@ -152,18 +137,19 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:paddingStart="32dp"
-        android:paddingEnd="32dp"
         android:paddingTop="12dp"
+        android:paddingEnd="32dp"
         android:paddingBottom="12dp"
         android:text="@string/sign_in"
+        app:iconTint="@color/twitter"
         android:textColor="@color/text_color_gray"
         app:icon="@drawable/ic_twitter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSingInFacebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnSingInFacebook"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/btnSingInFacebook"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
