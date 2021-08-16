@@ -17,15 +17,16 @@ class SplashViewModel @Inject constructor(
 ) : BaseViewModel(mainCoroutineDispatcher) {
 
     fun refreshToken() = doInMain {
-        if (userInfoManager.getEmail() != "" &&
-            userInfoManager.getToken() != ""
-
+        if (userInfoManager.getEmail().isNullOrEmpty()&&
+            userInfoManager.getToken().isNullOrEmpty()
         ) {
-            splashEventChannel.send(Resource.Success(true))
+            splashEventChannel.send(SplashEvent.NavigateToAuth(false))
+        }else{
+            splashEventChannel.send(SplashEvent.NavigateToSearch(true))
         }
     }
 
-    private val splashEventChannel = Channel<Resource<Boolean>>()
+    private val splashEventChannel = Channel<SplashEvent>()
     val splashEvent = splashEventChannel.receiveAsFlow()
 
     init {

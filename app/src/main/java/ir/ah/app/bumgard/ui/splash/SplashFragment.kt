@@ -16,6 +16,7 @@ import ir.ah.app.bumgard.other.wrapper.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.*
+
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<SplashViewModel>(
     R.layout.fragment_splash, SplashViewModel::class
@@ -28,25 +29,19 @@ class SplashFragment : BaseFragment<SplashViewModel>(
         lifecycleScope.launchWhenStarted {
             delay(2000)
             vm.splashEvent.collectLatest { event ->
-                handleResource(event, vm::refreshToken)
+
                 when (event) {
-                    is Resource.Failure -> {
-
+                    is SplashEvent.NavigateToAuth -> {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuth())
                     }
-                    Resource.Loading -> {
-
-                    }
-                    is Resource.Success -> {
-                        if (event.success) {
-                            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuth())
-                        } else {
-                            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
-                        }
+                    is SplashEvent.NavigateToSearch -> {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
                     }
                 }
             }
         }
     }
+
     private fun getLoginNavigationResult() {
         getNavigationResult<Boolean>(
             RESULT_LOGIN,
@@ -58,6 +53,7 @@ class SplashFragment : BaseFragment<SplashViewModel>(
             }
         }
     }
+
     override fun setUpViews() {
         super.setUpViews()
         getLoginNavigationResult()
