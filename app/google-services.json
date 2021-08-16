@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "83348441788",
+    "project_id": "bumgard-f4d37",
+    "storage_bucket": "bumgard-f4d37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83348441788:android:ef54712b1195c06c37deb9",
+        "android_client_info": {
+          "package_name": "ir.ah.app.bumgard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83348441788-fser85j4uv34ku2nhs7le15qkrc36vgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.ah.app.bumgard",
+            "certificate_hash": "60b2b5b8e8ec0d030c3f6b5fc181be9c748786b6"
+          }
+        },
+        {
+          "client_id": "83348441788-sb5kvdpogdlivgl8fcuopemr5vv7pot8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0-5EDWWgAivr3g6CYUYsfguKl_E0XVmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83348441788-sb5kvdpogdlivgl8fcuopemr5vv7pot8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
