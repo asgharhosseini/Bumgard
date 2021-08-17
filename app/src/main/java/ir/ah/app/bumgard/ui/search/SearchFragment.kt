@@ -2,6 +2,7 @@ package ir.ah.app.bumgard.ui.search
 
 
 import dagger.hilt.android.*
+import ir.ah.app.bumgard.*
 import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.databinding.*
@@ -21,6 +22,7 @@ class SearchFragment : BaseFragment<SearchViewModel>(
 
     override fun setUpViews() {
         super.setUpViews()
+        (activity as MainActivity).showBottomNav()
 
     }
 
