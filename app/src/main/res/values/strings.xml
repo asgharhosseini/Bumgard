@@ -30,4 +30,11 @@
     <string name="password_and_password_verification_are_not_the_same">Password And Password Verification Are Not The Same</string>
     <string name="password_must_be_longer_than_6_characters">Password must be longer than 6 characters</string>
     <string name="confirm_password_must_be_longer_than_6_characters">Confirm Password must be longer than 6 characters</string>
+    <string name="where_do_you_want_to_go">Where do you want to go?</string>
+    <string name="check_in_date">Check-in Date</string>
+    <string name="check_out_date">Check-out Date</string>
+    <string name="guest">Guest</string>
+    <string name="search">Search</string>
+    <string name="top_destinations">TOP DESTINATIONS</string>
+    <string name="popular_destinations">POPULAR DESTINATIONS</string>
 </resources>

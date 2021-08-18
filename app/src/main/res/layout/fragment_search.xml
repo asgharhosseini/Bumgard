@@ -1,6 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_color"
+            android:layout_height="?attr/actionBarSize">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/search"
+               android:textColor="@color/white"
+               android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_map"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cd_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="2dp"
+                android:visibility="visible"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_search"
+                        android:fadingEdge="vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|end"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="0.1"
+                            android:src="@drawable/ic_search" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="0.9"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/where_do_you_want_to_go" />
+                    </LinearLayout>
+                    <LinearLayout
+                       android:id="@+id/filterLayout"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       tools:ignore="MissingConstraints"
+                       android:orientation="vertical"
+                       android:visibility="gone"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                       >
+                       <LinearLayout
+                           android:id="@+id/linearLayout2"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="8dp"
+                           android:orientation="horizontal"
+                           >
+                           <LinearLayout
+                               android:id="@+id/ll_dateDeparture"
+                               android:layout_width="0dp"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="0.5"
+                               android:background="@drawable/bg_search"
+                               android:orientation="horizontal"
+                               android:padding="8dp"
+                               android:layout_marginEnd="8dp"
+                               app:layout_constraintEnd_toEndOf="parent"
+                               app:layout_constraintStart_toEndOf="@+id/ll_dateReturn"
+                               app:layout_constraintTop_toTopOf="parent"
+                               tools:ignore="MissingConstraints">
+
+                               <ImageView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginEnd="8dp"
+                                   android:src="@drawable/ic_calendar" />
+
+                               <TextView
+                                   android:id="@+id/txt_dateDeparture"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginEnd="8dp"
+                                   android:text="@string/check_in_date"
+                                   android:textDirection="anyRtl"
+                                   android:textSize="12sp" />
+
+
+                           </LinearLayout>
+                           <LinearLayout
+                               android:id="@+id/ll_dateReturn"
+                               android:layout_width="0dp"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="0.5"
+                               android:background="@drawable/bg_search"
+                               android:orientation="horizontal"
+                               android:padding="8dp"
+                                android:layout_marginStart="8dp"
+                               tools:ignore="MissingConstraints">
+
+                               <ImageView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginEnd="8dp"
+                                   android:src="@drawable/ic_calendar" />
+
+                               <TextView
+                                   android:id="@+id/txt_dateReturn"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginEnd="8dp"
+                                   android:text="@string/check_out_date"
+                                   android:textSize="12sp" />
+
+
+                           </LinearLayout>
+
+
+                       </LinearLayout>
+                       <LinearLayout
+                           android:id="@+id/linearLayout4"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="8dp"
+                           android:background="@drawable/bg_search"
+                           android:orientation="horizontal"
+                           android:padding="8dp"
+
+                           tools:ignore="MissingConstraints">
+                           <ImageView
+                               android:layout_width="32dp"
+                               android:layout_height="match_parent"
+                               android:layout_gravity="center|end"
+                               android:backgroundTint="@color/purple_200"
+                               android:layout_marginEnd="16dp"
+                               android:layout_weight="0.1"
+                               android:src="@drawable/ic_user" />
+                           <com.google.android.material.textfield.TextInputEditText
+                               android:id="@+id/edt_countGuest"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_marginEnd="8dp"
+                               android:layout_weight="0.9"
+                               android:background="@android:color/transparent"
+                               android:hint="@string/guest" />
+                           <ImageView
+                               android:id="@+id/iv_down"
+                               android:layout_width="48dp"
+                               android:layout_height="match_parent"
+                               android:layout_gravity="center|end"
+                               android:layout_marginStart="16dp"
+                               android:layout_marginEnd="16dp"
+                               android:layout_weight="0.1"
+                               android:src="@drawable/ic_arrow_down" />
+                           <ImageView
+                               android:id="@+id/iv_up"
+                               android:layout_width="48dp"
+                               android:layout_height="match_parent"
+                               android:layout_gravity="center|end"
+                               android:layout_marginEnd="16dp"
+                               android:layout_weight="0.1"
+                               android:src="@drawable/ic_arrow_up" />
+
+                       </LinearLayout>
+                       <com.google.android.material.button.MaterialButton
+                           android:id="@+id/btn_search"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="8dp"
+                           android:layout_marginBottom="8dp"
+                           android:background="@drawable/background_color_button"
+                           android:text="@string/search"
+                           android:textSize="16sp"
+                           android:visibility="visible"
+                           app:cornerRadius="32dp"
+                           app:layout_constraintBottom_toBottomOf="parent"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                           tools:ignore="MissingConstraints" />
+                   </LinearLayout>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/baseView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cd_search"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="@string/top_destinations"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingVertical="16dp"
+                    android:text="@string/popular_destinations"
+                    android:textColor="@color/black"
+                    android:textDirection="anyRtl"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_searchFragment_top" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_searchFragment_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    tools:itemCount="12"
+                    tools:listitem="@layout/item_top"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_searchFragment_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    tools:itemCount="12"
+                    tools:listitem="@layout/item_popular"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/searchResultView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cd_search"
+                tools:ignore="MissingConstraints">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_searchFragment_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
