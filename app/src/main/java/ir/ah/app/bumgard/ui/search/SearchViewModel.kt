@@ -27,11 +27,11 @@ class SearchViewModel @Inject constructor(
     val search = searchChanel.receiveAsFlow()
 
 
-    fun getTopCity(page: Int) = doInMain {
+    fun getTopCity() = doInMain {
         topCityChanel.send(Resource.Loading)
         topCityChanel.send(searchRepository.getTopCity())
     }
-    fun getPopularCity(page: Int) = doInMain {
+    fun getPopularCity() = doInMain {
         popularCityChanel.send(Resource.Loading)
         popularCityChanel.send(searchRepository.getPopularCity())
     }
