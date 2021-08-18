@@ -199,8 +199,10 @@
                                android:layout_height="wrap_content"
                                android:layout_marginEnd="8dp"
                                android:layout_weight="0.9"
+                                android:inputType="numberDecimal"
+                               android:enabled="false"
                                android:background="@android:color/transparent"
-                               android:hint="@string/guest" />
+                               android:text="1" />
                            <ImageView
                                android:id="@+id/iv_down"
                                android:layout_width="48dp"
