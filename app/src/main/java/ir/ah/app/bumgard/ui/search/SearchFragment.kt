@@ -1,6 +1,7 @@
 package ir.ah.app.bumgard.ui.search
 
 
+import android.text.*
 import android.util.*
 import android.view.*
 import androidx.lifecycle.*
@@ -40,7 +41,32 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         (activity as MainActivity).showBottomNav()
         handleSearchEditor()
         setUpAdapter()
+        setUpSearch()
 
+
+
+    }
+
+    private fun setUpSearch() {
+        binding.edtSearch.afterTextChanged { it ->
+            vm.searchQuery.value = it
+        }
+        binding.ivDown.setOnClickListener {
+            if (vm.guest.value != 1) {
+                vm.guest.value -= 1
+              binding.edtCountGuest .text = Editable.Factory.getInstance()
+                    .newEditable("${ vm.guest.value.toString()}")
+
+            }
+        }
+        binding.ivUp.setOnClickListener {
+            if (vm.guest.value <=5){
+                vm.guest.value += 1
+                binding.edtCountGuest .text = Editable.Factory.getInstance()
+                    .newEditable("${ vm.guest.value.toString()}")
+            }
+
+        }
 
 
     }

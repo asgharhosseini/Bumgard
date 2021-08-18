@@ -26,6 +26,12 @@ class SearchViewModel @Inject constructor(
     private val searchChanel = Channel<Resource<HotelResponse>>()
     val search = searchChanel.receiveAsFlow()
 
+        val searchQuery: MutableStateFlow<String> = MutableStateFlow("")
+        val checkOutDate: MutableStateFlow<String> = MutableStateFlow("")
+        val checkInDate: MutableStateFlow<String> = MutableStateFlow("")
+        val guest: MutableStateFlow<Int> = MutableStateFlow(1)
+
+
 
     fun getTopCity() = doInMain {
         topCityChanel.send(Resource.Loading)
