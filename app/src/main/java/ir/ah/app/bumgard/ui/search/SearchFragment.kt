@@ -1,11 +1,14 @@
 package ir.ah.app.bumgard.ui.search
 
 
+import android.os.*
 import android.text.*
-import android.util.*
 import android.view.*
+import androidx.annotation.*
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.*
+import com.google.android.material.datepicker.*
+
 import dagger.hilt.android.*
 import ir.ah.app.bumgard.*
 import ir.ah.app.bumgard.R
@@ -13,11 +16,16 @@ import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.other.util.*
+import androidx.core.util.Pair
 import ir.ah.app.bumgard.other.util.Constance.TAG
 import ir.ah.app.bumgard.other.util.UtilityAnimation.fadeVisibility
 import ir.ah.app.bumgard.other.wrapper.*
 import ir.ah.app.bumgard.ui.search.adapter.*
 import kotlinx.coroutines.flow.*
+import java.text.*
+import java.time.*
+import java.time.format.*
+import java.util.*
 import javax.inject.*
 
 
@@ -26,8 +34,10 @@ class SearchFragment : BaseFragment<SearchViewModel>(
     R.layout.fragment_search, SearchViewModel::class
 ) {
     private val binding by viewBinding(FragmentSearchBinding::bind)
+
     @Inject
     lateinit var topCityAdapter: TopCityAdapter
+
     @Inject
     lateinit var popularCityAdapter: PopularCityAdapter
 
@@ -42,8 +52,19 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         handleSearchEditor()
         setUpAdapter()
         setUpSearch()
+        onItemClick()
 
 
+    }
+
+    private fun onItemClick() {
+
+        binding.txtDateReturn.setOnClickListener {
+            onDateRangeSelected()
+        }
+        binding.txtDateDeparture.setOnClickListener {
+            onDateRangeSelected()
+        }
 
     }
 
@@ -54,16 +75,16 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         binding.ivDown.setOnClickListener {
             if (vm.guest.value != 1) {
                 vm.guest.value -= 1
-              binding.edtCountGuest .text = Editable.Factory.getInstance()
-                    .newEditable("${ vm.guest.value.toString()}")
+                binding.edtCountGuest.text = Editable.Factory.getInstance()
+                    .newEditable("${vm.guest.value.toString()}")
 
             }
         }
         binding.ivUp.setOnClickListener {
-            if (vm.guest.value <=5){
+            if (vm.guest.value <= 5) {
                 vm.guest.value += 1
-                binding.edtCountGuest .text = Editable.Factory.getInstance()
-                    .newEditable("${ vm.guest.value.toString()}")
+                binding.edtCountGuest.text = Editable.Factory.getInstance()
+                    .newEditable("${vm.guest.value.toString()}")
             }
 
         }
@@ -77,25 +98,29 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         lifecycleScope.launchWhenStarted {
             vm.topCity.collectLatest { event ->
                 handleResource(event) { vm.getTopCity() }
-                when(event){
-                   is Resource.Loading ->{}
-                   is Resource.Success ->{
-                       topCityAdapter.submitList(event.success.cities)
-                   }
-                   is Resource.Failure ->{}
+                when (event) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        topCityAdapter.submitList(event.success.cities)
+                    }
+                    is Resource.Failure -> {
+                    }
                 }
                 vm.popularCity.collectLatest { event ->
                     handleResource(event) { vm.getPopularCity() }
-                    when(event){
-                        is Resource.Loading ->{}
-                        is Resource.Success ->{
-                            popularCityAdapter.submitList(event.success.cities)
-                            Log.e(TAG,event.success.cities[0].name)
+                    when (event) {
+                        is Resource.Loading -> {
                         }
-                        is Resource.Failure ->{}
+                        is Resource.Success -> {
+                            popularCityAdapter.submitList(event.success.cities)
+
+                        }
+                        is Resource.Failure -> {
+                        }
                     }
 
-            }
+                }
 
             }
 
@@ -119,7 +144,7 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         }
     }
 
-    private fun handleSearchEditor(){
+    private fun handleSearchEditor() {
         binding.edtSearch.afterTextChanged { it ->
             if (it.length > 0) {
                 binding.filterLayout.fadeVisibility(View.VISIBLE, 600)
@@ -131,10 +156,39 @@ class SearchFragment : BaseFragment<SearchViewModel>(
                 binding.filterLayout.fadeVisibility(View.GONE, 600)
                 binding.baseView.fadeVisibility(View.VISIBLE, 600)
                 binding.searchResultView.fadeVisibility(View.GONE, 600)
+                binding.txtDateDeparture.text = getString(R.string.check_in_date)
+                binding.txtDateReturn.text =  getString(R.string.check_out_date)
 
             }
 
         }
     }
 
+
+    private fun onDateRangeSelected() {
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
+        val now = Calendar.getInstance()
+        builder.setSelection(Pair(now.timeInMillis, now.timeInMillis))
+        val picker = builder.build()
+        picker.show(activity?.supportFragmentManager!!, picker.toString())
+        picker.addOnNegativeButtonClickListener {
+        }
+        picker.addOnPositiveButtonClickListener {
+            vm.checkInDate.value = dateFormatted(it.first)
+            vm.checkOutDate.value = dateFormatted(it.second)
+
+            binding.txtDateDeparture.text = dateFormatted(it.first)
+            binding.txtDateReturn.text =  dateFormatted(it.second)
+        }
+
+
+    }
+
+
+
+
+
+
 }
+
+
