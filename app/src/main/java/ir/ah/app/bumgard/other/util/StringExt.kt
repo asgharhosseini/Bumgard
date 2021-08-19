@@ -10,3 +10,9 @@ fun dateToName(date: Date): String {
 
 fun String.isValidEmail() =
     isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+
+fun dateFormatted(date: Long): String {
+
+    return DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date(date))
+}
