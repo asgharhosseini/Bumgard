@@ -6,5 +6,9 @@ import ir.ah.app.bumgard.other.wrapper.*
 interface SearchRepository {
     suspend fun getTopCity(): Resource<CityResponse>
     suspend fun getPopularCity(): Resource<CityResponse>
-    suspend fun getSearch(cityName:String): Resource<HotelResponse>
+    suspend fun getSearch(
+        cityName: String,
+        checkInDate: String="",
+        checkOutDate: String="",
+        guest: Int=1): Resource<HotelResponse>
 }
