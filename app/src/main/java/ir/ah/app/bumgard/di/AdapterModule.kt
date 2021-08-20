@@ -15,4 +15,6 @@ object AdapterModule {
     fun provideTopCityAdapter(glide: RequestManager) = TopCityAdapter(glide)
     @Provides
     fun providePopularCityAdapter(glide: RequestManager) = PopularCityAdapter(glide)
+    @Provides
+    fun provideSearchAdapter(glide: RequestManager) = SearchAdapter(glide)
 }
