@@ -2,14 +2,14 @@ package ir.ah.app.bumgard.data.repository.search.factory
 
 
 import ir.ah.app.bumgard.data.model.*
+import ir.ah.app.bumgard.other.util.*
 import java.util.ArrayList
+import kotlin.random.*
 
 object DummyFactory {
 
 
-
-
-    val cityName= listOf<String>(
+    val cityName = listOf<String>(
         "Paris",
         "London",
         "New York",
@@ -23,7 +23,7 @@ object DummyFactory {
         "Venice",
         "Orlando",
     )
-    val cityImage= listOf<String>(
+    val cityImage = listOf<String>(
         "https://www.hotelscombined.com/rimg/dimg/bd/d1/2f268866-city-36014-162f82486f9.jpg",
         "https://www.hotelscombined.com/rimg/dimg/8a/d8/29dcb2f0-city-28501-17579c53c1d.jpg",
         "https://www.hotelscombined.com/rimg/dimg/8c/a9/d1b21b20-city-15830-16eb6a60801.jpg",
@@ -38,7 +38,7 @@ object DummyFactory {
         "https://www.hotelscombined.com/rimg/dimg/b0/34/b3ba72de-city-9900-16ed2ee666d.jpg",
     )
 
-    val hotelName= listOf<String>(
+    val hotelName = listOf<String>(
         "Park Plaza Westminster",
         "St Giles",
         "The Landmark",
@@ -56,7 +56,7 @@ object DummyFactory {
         "Best Rates Guaranteed",
         "Washington Mayfair Hotel",
     )
-    val hotelImage= listOf<String>(
+    val hotelImage = listOf<String>(
         "https://content.r9cdn.net/rimg/kimg/15/4e/0c846ad5-15e113fef94.jpg",
         "https://content.r9cdn.net/rimg/himg/f1/90/26/leonardo-215550756-FACADE-NIGHT-VIEW_O-465708.jpg",
         "https://content.r9cdn.net/rimg/himg/dc/74/98/leonardo-2694933-Marble_Hall_Sept18_1_O-502859.jpg",
@@ -75,30 +75,37 @@ object DummyFactory {
     )
 
 
-    fun hotelListGenerator():List<Hotel>{
-        val hotelList:ArrayList<Hotel> = arrayListOf()
-        for (i in 0..10){
-            val hotel =Hotel(i,i,i, hotelName[i], hotelImage[i],null,null)
+    fun hotelListGenerator(): List<Hotel> {
+        val hotelList: ArrayList<Hotel> = arrayListOf()
+        for (i in 0..10) {
+            val hotel = Hotel(
+                i, i, i,
+                hotelName[i],
+                hotelImage[i],
+                null, null,
+                 round( Random.nextDouble(0.5, 5.0),2),
+                Random.nextInt(30, 70),
+                "  $ ${Random.nextInt(60, 270)}",
+                Random.nextInt(2, 6)
+
+            )
             hotelList.add(hotel)
         }
         return hotelList
     }
 
 
-
-    fun cityListGenerator():List<City>{
-        val cityList:ArrayList<City> = arrayListOf()
-        for (i in 0..10){
-            val city =City(i,i, cityName[i], cityImage[i], 55.5,55.5, hotelListGenerator())
+    fun cityListGenerator(): List<City> {
+        val cityList: ArrayList<City> = arrayListOf()
+        for (i in 0..10) {
+            val city = City(i, i, cityName[i], cityImage[i], 55.5, 55.5, hotelListGenerator())
             cityList.add(city)
         }
         return cityList
     }
 
-    val DummyCityResponse = CityResponse(cityListGenerator(),1,1,1)
-    val DummyHotelResponse =HotelResponse(hotelListGenerator(),1,1,1)
-
-
+    val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
+    val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
 
 
 }

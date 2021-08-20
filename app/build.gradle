@@ -133,5 +133,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
+    // materialratingbar
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
 }

@@ -31,6 +31,12 @@ interface ApiService {
     suspend fun getSearch(
         @Field("cityName")
         cityName: String,
+        @Field("checkInDate")
+        checkInDate: String="",
+        @Field("checkOutDate")
+        checkOutDate: String="",
+        @Field("guest")
+        guest: Int=1,
         @Field("page")
         page: Int=1,
         @Field("apiKey")
