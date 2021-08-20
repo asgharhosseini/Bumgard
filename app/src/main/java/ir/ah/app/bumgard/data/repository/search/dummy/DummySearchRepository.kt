@@ -14,6 +14,11 @@ class DummySearchRepository :SearchRepository {
         Resource.Success(DummyCityResponse)
 
 
-    override suspend fun getSearch(cityName: String): Resource<HotelResponse> =
+    override suspend fun getSearch(
+        cityName: String,
+        checkInDate: String,
+        checkOutDate: String,
+        guest: Int
+    ): Resource<HotelResponse> =
         Resource.Success(DummyHotelResponse)
 }
