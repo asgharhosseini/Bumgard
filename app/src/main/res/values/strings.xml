@@ -37,4 +37,5 @@
     <string name="search">Search</string>
     <string name="top_destinations">TOP DESTINATIONS</string>
     <string name="popular_destinations">POPULAR DESTINATIONS</string>
+    <string name="search_query_is_empty">search query is empty</string>
 </resources>
