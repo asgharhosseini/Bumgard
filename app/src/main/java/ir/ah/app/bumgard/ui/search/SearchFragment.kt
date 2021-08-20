@@ -1,10 +1,8 @@
 package ir.ah.app.bumgard.ui.search
 
 
-import android.os.*
 import android.text.*
 import android.view.*
-import androidx.annotation.*
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.*
 import com.google.android.material.datepicker.*
@@ -17,14 +15,13 @@ import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.other.util.*
 import androidx.core.util.Pair
-import ir.ah.app.bumgard.other.util.Constance.TAG
+import androidx.core.widget.*
 import ir.ah.app.bumgard.other.util.UtilityAnimation.fadeVisibility
 import ir.ah.app.bumgard.other.wrapper.*
 import ir.ah.app.bumgard.ui.search.adapter.*
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import java.text.*
-import java.time.*
-import java.time.format.*
 import java.util.*
 import javax.inject.*
 
@@ -41,37 +38,31 @@ class SearchFragment : BaseFragment<SearchViewModel>(
     @Inject
     lateinit var popularCityAdapter: PopularCityAdapter
 
+    @Inject
+    lateinit var searchAdapter: SearchAdapter
+
+    var job: Job? = null
     override fun observeData() {
         super.observeData()
         subscribeToObserve()
+
     }
+
 
     override fun setUpViews() {
         super.setUpViews()
         (activity as MainActivity).showBottomNav()
         handleSearchEditor()
         setUpAdapter()
-        setUpSearch()
         onItemClick()
 
 
     }
 
     private fun onItemClick() {
-
-        binding.txtDateReturn.setOnClickListener {
-            onDateRangeSelected()
-        }
-        binding.txtDateDeparture.setOnClickListener {
-            onDateRangeSelected()
-        }
-
-    }
-
-    private fun setUpSearch() {
-        binding.edtSearch.afterTextChanged { it ->
-            vm.searchQuery.value = it
-        }
+        topCityAdapter.setOnItemClickListener { }
+        popularCityAdapter.setOnItemClickListener { }
+        searchAdapter.setOnItemClickListener { }
         binding.ivDown.setOnClickListener {
             if (vm.guest.value != 1) {
                 vm.guest.value -= 1
@@ -88,9 +79,21 @@ class SearchFragment : BaseFragment<SearchViewModel>(
             }
 
         }
+        binding.txtDateReturn.setOnClickListener {
+            onDateRangeSelected()
+        }
+        binding.txtDateDeparture.setOnClickListener {
+            onDateRangeSelected()
+        }
+        binding.btnSearch.setOnClickListener {
 
+            subscribeToObserveSearch()
+            binding.txtDateReturn.text = vm.checkOutDate.value
+            binding.txtDateDeparture.text = vm.checkInDate.value
+        }
 
     }
+
 
     private fun subscribeToObserve() {
         vm.getTopCity()
@@ -107,88 +110,123 @@ class SearchFragment : BaseFragment<SearchViewModel>(
                     is Resource.Failure -> {
                     }
                 }
-                vm.popularCity.collectLatest { event ->
-                    handleResource(event) { vm.getPopularCity() }
-                    when (event) {
-                        is Resource.Loading -> {
-                        }
-                        is Resource.Success -> {
-                            popularCityAdapter.submitList(event.success.cities)
 
-                        }
-                        is Resource.Failure -> {
-                        }
+            }
+        }
+        lifecycleScope.launchWhenStarted {
+            vm.popularCity.collectLatest { event ->
+                handleResource(event) { vm.getPopularCity() }
+                when (event) {
+                    is Resource.Loading -> {
                     }
+                    is Resource.Success -> {
+                        popularCityAdapter.submitList(event.success.cities)
 
+                    }
+                    is Resource.Failure -> {
+                    }
                 }
 
             }
-
         }
 
 
     }
 
+    private fun subscribeToObserveSearch() {
+        vm.validateSearch()
+        lifecycleScope.launchWhenStarted {
+            vm.searchQuery.collectLatest { event ->
+                when (event) {
+                    is SearchEvent.SearchQueryIsEmpty -> {
+                        binding.edtSearch.error = getString(R.string.search_query_is_empty)
+                    }
+                    is SearchEvent.ShowError -> {
+                    }
+                }
+            }
+        }
+        lifecycleScope.launchWhenStarted {
+            vm.search.collectLatest { event ->
+                when (event) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        searchAdapter.submitList(event.success.hotels)
+                    }
+                    is Resource.Failure -> {
+                    }
+                }
+
+            }
+        }
+    }
+
     private fun setUpAdapter() {
-        topCityAdapter.setOnItemClickListener { }
+
         binding.rvSearchFragmentTop.apply {
             adapter = topCityAdapter
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
-        popularCityAdapter.setOnItemClickListener { }
+
         binding.rvSearchFragmentPopular.apply {
             adapter = popularCityAdapter
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
+        binding.rvSearchFragmentSearch.apply {
+            adapter = searchAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
     }
 
     private fun handleSearchEditor() {
-        binding.edtSearch.afterTextChanged { it ->
-            if (it.length > 0) {
-                binding.filterLayout.fadeVisibility(View.VISIBLE, 600)
-                binding.baseView.fadeVisibility(View.GONE, 600)
-                binding.searchResultView.fadeVisibility(View.VISIBLE, 600)
+            binding.edtSearch.afterTextChanged {
+                if (it.isNotEmpty()) {
+                    vm.searchQueryText.value = it.toString().trim()
+                    binding.filterLayout.fadeVisibility(View.VISIBLE, 600)
+                    binding.baseView.fadeVisibility(View.GONE, 400)
+                    binding.searchResultView.fadeVisibility(View.VISIBLE, 600)
 
 
-            } else {
-                binding.filterLayout.fadeVisibility(View.GONE, 600)
-                binding.baseView.fadeVisibility(View.VISIBLE, 600)
-                binding.searchResultView.fadeVisibility(View.GONE, 600)
-                binding.txtDateDeparture.text = getString(R.string.check_in_date)
-                binding.txtDateReturn.text =  getString(R.string.check_out_date)
+                } else {
+                    binding.filterLayout.fadeVisibility(View.GONE, 600)
+                    binding.baseView.fadeVisibility(View.VISIBLE, 600)
+                    binding.searchResultView.fadeVisibility(View.GONE, 600)
+                    binding.txtDateDeparture.text = getString(R.string.check_in_date)
+                    binding.txtDateReturn.text = getString(R.string.check_out_date)
+                    searchAdapter.submitList(listOf())
 
+                }
             }
-
-        }
-    }
-
-
-    private fun onDateRangeSelected() {
-        val builder = MaterialDatePicker.Builder.dateRangePicker()
-        val now = Calendar.getInstance()
-        builder.setSelection(Pair(now.timeInMillis, now.timeInMillis))
-        val picker = builder.build()
-        picker.show(activity?.supportFragmentManager!!, picker.toString())
-        picker.addOnNegativeButtonClickListener {
-        }
-        picker.addOnPositiveButtonClickListener {
-            vm.checkInDate.value = dateFormatted(it.first)
-            vm.checkOutDate.value = dateFormatted(it.second)
-
-            binding.txtDateDeparture.text = dateFormatted(it.first)
-            binding.txtDateReturn.text =  dateFormatted(it.second)
-        }
-
-
     }
 
 
 
 
+
+private fun onDateRangeSelected() {
+    val builder = MaterialDatePicker.Builder.dateRangePicker()
+    val now = Calendar.getInstance()
+    builder.setSelection(Pair(now.timeInMillis, now.timeInMillis))
+    val picker = builder.build()
+    picker.show(activity?.supportFragmentManager!!, picker.toString())
+    picker.addOnNegativeButtonClickListener {
+    }
+    picker.addOnPositiveButtonClickListener {
+        vm.checkInDate.value = dateFormatted(it.first)
+        vm.checkOutDate.value = dateFormatted(it.second)
+
+        binding.txtDateDeparture.text = dateFormatted(it.first)
+        binding.txtDateReturn.text = dateFormatted(it.second)
+    }
 
 
 }
 
+
+
+}
 
