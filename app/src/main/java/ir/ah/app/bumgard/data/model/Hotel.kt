@@ -20,4 +20,14 @@ data class Hotel(
     var latitude: Double? = null,
     @Json(name = "longitude")
     var longitude: Double? = null,
+    @Json(name = "rate")
+    var rate: Double ,
+    @Json(name = "reviews")
+    var reviews: Int ,
+    @Json(name = "price")
+    var price: String ,
+    @Json(name = "price")
+    var spaceToCentrum: Int ,
+
+
 )
