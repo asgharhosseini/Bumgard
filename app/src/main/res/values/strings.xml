@@ -39,4 +39,13 @@
     <string name="popular_destinations">POPULAR DESTINATIONS</string>
     <string name="search_query_is_empty">search query is empty</string>
     <string name="per_night">per night</string>
+    <string name="filter">filter</string>
+    <string name="ratings">RATINGS</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="price_range">PRICE RANGE</string>
+    <string name="facilities">FACILITIES</string>
 </resources>
