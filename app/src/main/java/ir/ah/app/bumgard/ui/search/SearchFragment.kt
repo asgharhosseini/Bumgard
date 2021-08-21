@@ -16,6 +16,7 @@ import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.other.util.*
 import androidx.core.util.Pair
 import androidx.core.widget.*
+import androidx.navigation.fragment.*
 import ir.ah.app.bumgard.other.util.UtilityAnimation.fadeVisibility
 import ir.ah.app.bumgard.other.wrapper.*
 import ir.ah.app.bumgard.ui.search.adapter.*
@@ -90,6 +91,9 @@ class SearchFragment : BaseFragment<SearchViewModel>(
             subscribeToObserveSearch()
             binding.txtDateReturn.text = vm.checkOutDate.value
             binding.txtDateDeparture.text = vm.checkInDate.value
+        }
+        binding.btnFilter.setOnClickListener {
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToFilterFragment())
         }
 
     }
@@ -189,6 +193,7 @@ class SearchFragment : BaseFragment<SearchViewModel>(
                     binding.filterLayout.fadeVisibility(View.VISIBLE, 600)
                     binding.baseView.fadeVisibility(View.GONE, 400)
                     binding.searchResultView.fadeVisibility(View.VISIBLE, 600)
+                    binding.btnFilter.fadeVisibility(View.VISIBLE,600)
 
 
                 } else {
@@ -198,6 +203,7 @@ class SearchFragment : BaseFragment<SearchViewModel>(
                     binding.txtDateDeparture.text = getString(R.string.check_in_date)
                     binding.txtDateReturn.text = getString(R.string.check_out_date)
                     searchAdapter.submitList(listOf())
+                    binding.btnFilter.fadeVisibility(View.GONE,600)
 
                 }
             }
