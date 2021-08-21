@@ -1,19 +1,26 @@
 package ir.ah.app.bumgard.ui.search.filter
 
 
+import android.os.*
 import android.util.*
+import android.view.*
 import android.widget.*
 import androidx.navigation.fragment.*
+import androidx.recyclerview.selection.*
+import androidx.recyclerview.widget.*
 import com.google.android.material.chip.*
 import com.google.android.material.slider.*
 import dagger.hilt.android.*
 import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
+import ir.ah.app.bumgard.data.model.*
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.ui.search.*
+import ir.ah.app.bumgard.ui.search.filter.adapter.*
 import java.text.*
 import java.util.*
+import javax.inject.*
 import kotlin.math.*
 
 @AndroidEntryPoint
@@ -23,16 +30,31 @@ class FilterFragment : BaseFragment<SearchViewModel>(
     private val binding by viewBinding(FragmentFilterBinding::bind)
 
 
+    @Inject
+    lateinit var facilitiesAdapter: FacilitiesAdapter
+
+    val myList = listOf(
+        Facilities(0,"Alice", R.drawable.ic_calendar),
+        Facilities(1,"Bob",  R.drawable.ic_calendar),
+        Facilities(2,"Carol", R.drawable.ic_calendar),
+        Facilities(3,"Dan",  R.drawable.ic_calendar),
+        Facilities(4,"Eric", R.drawable.ic_calendar),
+        Facilities(5,"Craig", R.drawable.ic_calendar)
+    )
     override fun observeData() {
         super.observeData()
 
+
+
     }
+
+
 
     override fun setUpViews() {
         super.setUpViews()
 
         onClickItem()
-
+        setupAdapter()
     }
 
     private fun onClickItem() {
@@ -65,6 +87,38 @@ class FilterFragment : BaseFragment<SearchViewModel>(
         }
 
     }
+    var tracker: SelectionTracker<String>? = null
+    private fun setupAdapter() {
+
+        binding.recyclerView.apply {
+            adapter = facilitiesAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+        }
+        facilitiesAdapter.submitList(myList)
+
+        tracker = SelectionTracker.Builder<String>(
+            "mySelection",
+            binding.recyclerView,
+            MyItemKeyProvider(facilitiesAdapter),
+            MyItemDetailsLookup(binding.recyclerView),
+            StorageStrategy.createStringStorage()
+        ).withSelectionPredicate(
+            SelectionPredicates.createSelectAnything()
+        ).build()
+        facilitiesAdapter.tracker = tracker
+        tracker?.addObserver(
+            object : SelectionTracker.SelectionObserver<String>() {
+                override fun onSelectionChanged() {
+                    super.onSelectionChanged()
+
+                }
+            })
+
+    }
+
+
 
 
 }
