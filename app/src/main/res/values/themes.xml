@@ -14,5 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
+        <item name="android:textColor">@color/text_color_chip_state_list</item>
+        <item name="chipIconTint">@color/text_color_chip_state_list</item>
+    </style>
 
 </resources>
