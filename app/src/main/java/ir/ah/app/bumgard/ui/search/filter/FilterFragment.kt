@@ -5,6 +5,7 @@ import android.os.*
 import android.util.*
 import android.view.*
 import android.widget.*
+import androidx.lifecycle.*
 import androidx.navigation.fragment.*
 import androidx.recyclerview.selection.*
 import androidx.recyclerview.widget.*
@@ -14,10 +15,13 @@ import dagger.hilt.android.*
 import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.data.model.*
+import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.facilitiesList
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
+import ir.ah.app.bumgard.other.wrapper.*
 import ir.ah.app.bumgard.ui.search.*
 import ir.ah.app.bumgard.ui.search.filter.adapter.*
+import kotlinx.coroutines.flow.*
 import java.text.*
 import java.util.*
 import javax.inject.*
@@ -33,21 +37,30 @@ class FilterFragment : BaseFragment<SearchViewModel>(
     @Inject
     lateinit var facilitiesAdapter: FacilitiesAdapter
 
-    val myList = listOf(
-        Facilities(0,"Alice", R.drawable.ic_calendar),
-        Facilities(1,"Bob",  R.drawable.ic_calendar),
-        Facilities(2,"Carol", R.drawable.ic_calendar),
-        Facilities(3,"Dan",  R.drawable.ic_calendar),
-        Facilities(4,"Eric", R.drawable.ic_calendar),
-        Facilities(5,"Craig", R.drawable.ic_calendar)
-    )
     override fun observeData() {
         super.observeData()
 
-
-
+        subscribeToObserve()
     }
 
+    private fun subscribeToObserve() {
+        vm.getFacilities()
+        lifecycleScope.launchWhenStarted {
+            vm.facilities.collectLatest { event ->
+                handleResource(event) { vm.getFacilities() }
+                when (event) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+
+                       facilitiesAdapter.submitList(event.success.facilities)
+                    }
+                    is Resource.Failure -> {
+                    }
+                }
+            }
+        }
+    }
 
 
     override fun setUpViews() {
@@ -58,27 +71,30 @@ class FilterFragment : BaseFragment<SearchViewModel>(
     }
 
     private fun onClickItem() {
-       binding.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_back)
+        binding.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_back)
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
+            vm.filterFacilitiesList.value = listOf()
+            vm.filterStar.value = "all"
+            vm.priceOf.value = ""
+            vm.priceUp.value = ""
+            facilitiesAdapter.clearSelectedList()
         }
-       binding.chipsGroup.setOnCheckedChangeListener { chipGroup, checkedId ->
+        binding.chipsGroup.setOnCheckedChangeListener { chipGroup, checkedId ->
             val titleOrNull = chipGroup.findViewById<Chip>(checkedId)?.text
-            Toast.makeText(chipGroup.context, titleOrNull ?: "No Choice", Toast.LENGTH_LONG).show()
+            vm.filterStar.value = titleOrNull.toString()
+           // Toast.makeText(chipGroup.context, titleOrNull ?: "No Choice", Toast.LENGTH_LONG).show()
         }
 
         binding.rangeSlider.apply {
-            addOnChangeListener(object : RangeSlider.OnChangeListener{
-
+            addOnChangeListener(object : RangeSlider.OnChangeListener {
                 override fun onValueChange(slider: RangeSlider, value: Float, fromUser: Boolean) {
-                    val values =  this@apply.values
-
-                    Log.d("From", values[0].toString())
-                    Log.d("T0", values[1].toString())
+                    val values = this@apply.values
+                    vm.priceOf.value = values[0].toString()
+                    vm.priceUp.value = values[1].toString()
                 }
             })
-            setLabelFormatter {
-                    value: Float ->
+            setLabelFormatter { value: Float ->
                 val format = NumberFormat.getCurrencyInstance()
                 format.maximumFractionDigits = 0
                 format.currency = Currency.getInstance("USD")
@@ -86,7 +102,13 @@ class FilterFragment : BaseFragment<SearchViewModel>(
             }
         }
 
+        binding.btnDone.setOnClickListener {
+            vm.filterFacilitiesList.value = facilitiesAdapter.getSelectedList()
+            findNavController().popBackStack()
+        }
+
     }
+
     var tracker: SelectionTracker<String>? = null
     private fun setupAdapter() {
 
@@ -96,8 +118,7 @@ class FilterFragment : BaseFragment<SearchViewModel>(
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
-        facilitiesAdapter.submitList(myList)
-
+        facilitiesAdapter.submitList(facilitiesList)
         tracker = SelectionTracker.Builder<String>(
             "mySelection",
             binding.recyclerView,
@@ -116,9 +137,8 @@ class FilterFragment : BaseFragment<SearchViewModel>(
                 }
             })
 
+
     }
-
-
 
 
 }
