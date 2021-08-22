@@ -114,6 +114,7 @@ object DummyFactory {
 
     val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
     val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
+    val DummyFacilitiesResponse = FacilitiesResponse(facilitiesList, 1, 1, 1)
 
 
 }
