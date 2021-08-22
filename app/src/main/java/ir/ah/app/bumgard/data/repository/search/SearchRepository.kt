@@ -11,4 +11,5 @@ interface SearchRepository {
         checkInDate: String="",
         checkOutDate: String="",
         guest: Int=1): Resource<HotelResponse>
+    suspend fun getFacilities(): Resource<FacilitiesResponse>
 }

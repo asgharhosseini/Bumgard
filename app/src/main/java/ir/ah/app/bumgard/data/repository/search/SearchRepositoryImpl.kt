@@ -21,4 +21,9 @@ class SearchRepositoryImpl @Inject constructor(private val apiService: ApiServic
         guest: Int
     ): Resource<HotelResponse> =
         safeApiCall { apiService.getSearch(cityName,checkInDate,checkOutDate,guest) }
+
+    override suspend fun getFacilities(): Resource<FacilitiesResponse>  =
+        safeApiCall { apiService.getFacilities() }
+
+
 }

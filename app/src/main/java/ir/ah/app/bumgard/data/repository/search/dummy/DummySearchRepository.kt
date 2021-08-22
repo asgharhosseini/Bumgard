@@ -3,7 +3,9 @@ package ir.ah.app.bumgard.data.repository.search.dummy
 import ir.ah.app.bumgard.data.model.*
 import ir.ah.app.bumgard.data.repository.search.*
 import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.DummyCityResponse
+import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.DummyFacilitiesResponse
 import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.DummyHotelResponse
+import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.facilitiesList
 import ir.ah.app.bumgard.other.wrapper.*
 
 class DummySearchRepository :SearchRepository {
@@ -21,4 +23,7 @@ class DummySearchRepository :SearchRepository {
         guest: Int
     ): Resource<HotelResponse> =
         Resource.Success(DummyHotelResponse)
+
+    override suspend fun getFacilities(): Resource<FacilitiesResponse> =
+        Resource.Success(DummyFacilitiesResponse)
 }

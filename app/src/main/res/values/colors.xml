@@ -28,5 +28,6 @@
     <color name="facebook">#3B5998</color>
     <color name="background_search">#F2F2F2</color>
     <color name="text_black">#333333</color>
+    <color name="color_unchecked">#9C9C9C</color>
 
 </resources>
