@@ -1,6 +1,7 @@
 package ir.ah.app.bumgard.data.repository.search.factory
 
 
+import ir.ah.app.bumgard.*
 import ir.ah.app.bumgard.data.model.*
 import ir.ah.app.bumgard.other.util.*
 import java.util.ArrayList
@@ -103,6 +104,13 @@ object DummyFactory {
         }
         return cityList
     }
+
+    val facilitiesList = listOf(
+        Facilities(0,"Wifi", R.drawable.ic_wifi),
+        Facilities(1,"Food",  R.drawable.ic_food),
+        Facilities(2,"Pet", R.drawable.ic_pet),
+        Facilities(3,"Parking",  R.drawable.ic_parking),
+    )
 
     val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
     val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
