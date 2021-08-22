@@ -14,6 +14,7 @@ import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.data.model.*
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.ui.search.adapter.*
+import java.util.ArrayList
 
 
 class FacilitiesAdapter :
@@ -21,10 +22,18 @@ class FacilitiesAdapter :
     init {
         setHasStableIds(true)
     }
+   private var selectedList: ArrayList<Facilities> = arrayListOf()
     var tracker: SelectionTracker<String>? = null
+
+    fun getSelectedList():ArrayList<Facilities> {
+        return selectedList
+    }
+    fun clearSelectedList(){
+       selectedList =  arrayListOf()
+    }
+
     inner class FacilitiesViewHolder(private val binding: ItemFacilitiesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
 
         fun bind(facilities: Facilities, selected: Boolean) {
             binding.apply {
@@ -32,9 +41,15 @@ class FacilitiesAdapter :
                 imageView.setImageResource(facilities.image)
                 if (selected){
                     parent.setBackgroundResource(R.drawable.background_facilities_selected_color)
+                    selectedList.add(facilities)
+                    title.setTextColor(Color.WHITE)
+                    imageView.setColorFilter(Color.WHITE)
 
                 }else{
                     parent.setBackgroundResource(R.drawable.background_facilities_deselected_color)
+                    selectedList.remove(facilities)
+                    title.setTextColor(Color.parseColor("#9C9C9C"))
+                    imageView.setColorFilter(Color.parseColor("#9C9C9C"))
                 }
 
             }
