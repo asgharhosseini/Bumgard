@@ -25,6 +25,9 @@ class SearchViewModel @Inject constructor(
     private val popularCityChanel = Channel<Resource<CityResponse>>()
     val popularCity = popularCityChanel.receiveAsFlow()
 
+    private val facilitiesChanel = Channel<Resource<FacilitiesResponse>>()
+    val facilities = facilitiesChanel.receiveAsFlow()
+
     private val searchChanel = Channel<Resource<HotelResponse>>()
     val search = searchChanel.receiveAsFlow()
 
@@ -35,6 +38,7 @@ class SearchViewModel @Inject constructor(
     val checkOutDate: MutableStateFlow<String> = MutableStateFlow(getTomorrowDate())
     val checkInDate: MutableStateFlow<String> = MutableStateFlow(getTodayDate())
     val guest: MutableStateFlow<Int> = MutableStateFlow(1)
+    val facilitiesList: MutableStateFlow<List<Facilities>> = MutableStateFlow(listOf())
 
 
     fun validateSearch() {
@@ -62,6 +66,11 @@ class SearchViewModel @Inject constructor(
     fun getPopularCity() = doInMain {
         popularCityChanel.send(Resource.Loading)
         popularCityChanel.send(searchRepository.getPopularCity())
+    }
+
+    fun getFacilities() = doInMain {
+        facilitiesChanel.send(Resource.Loading)
+        facilitiesChanel.send(searchRepository.getFacilities())
     }
 
     private fun getSearch(cityName: String, checkInDate: String, checkOutDate: String, guest: Int) =
