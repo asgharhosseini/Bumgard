@@ -38,7 +38,11 @@ class SearchViewModel @Inject constructor(
     val checkOutDate: MutableStateFlow<String> = MutableStateFlow(getTomorrowDate())
     val checkInDate: MutableStateFlow<String> = MutableStateFlow(getTodayDate())
     val guest: MutableStateFlow<Int> = MutableStateFlow(1)
-    val facilitiesList: MutableStateFlow<List<Facilities>> = MutableStateFlow(listOf())
+    val filterFacilitiesList: MutableStateFlow<List<Facilities>> = MutableStateFlow(listOf())
+    val filterStar: MutableStateFlow<String> = MutableStateFlow("all")
+    val priceOf: MutableStateFlow<String> = MutableStateFlow("")
+    val priceUp: MutableStateFlow<String> = MutableStateFlow("")
+
 
 
     fun validateSearch() {
