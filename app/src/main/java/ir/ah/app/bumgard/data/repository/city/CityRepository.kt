@@ -5,6 +5,6 @@ import ir.ah.app.bumgard.other.wrapper.*
 
 interface CityRepository {
 
-    suspend fun getCity(cityName: String): Resource<HotelResponse>
+    suspend fun getHotelInCity(cityName: String): Resource<HotelResponse>
 
 }

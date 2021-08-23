@@ -20,13 +20,13 @@ class CityViewModel @Inject constructor(
     private val hotelInCityChanel = Channel<Resource<HotelResponse>>()
     val hotelInCity = hotelInCityChanel.receiveAsFlow()
 
-     fun getCity() =
+     fun getHotelInCity() =
         doInMain {
             hotelInCityChanel.send(Resource.Loading)
 
             cityName.value?.let {
                 hotelInCityChanel.send(
-                    repository.getCity(it)
+                    repository.getHotelInCity(it)
                 )
             }
 

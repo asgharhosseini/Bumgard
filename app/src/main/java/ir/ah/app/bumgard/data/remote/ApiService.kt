@@ -59,7 +59,7 @@ interface ApiService {
 
     @POST(EndPoints.getSearchRequest)
     @FormUrlEncoded
-    suspend fun getCity(
+    suspend fun getHotelInCity(
         @Field("cityName")
         cityName: String,
         @Field("page")
