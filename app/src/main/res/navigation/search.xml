@@ -61,5 +61,9 @@
         android:id="@+id/cityFragment"
         tools:layout="@layout/fragment_city"
         android:name="ir.ah.app.bumgard.ui.city.CityFragment"
-        android:label="CityFragment" />
+        android:label="CityFragment" >
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
 </navigation>
