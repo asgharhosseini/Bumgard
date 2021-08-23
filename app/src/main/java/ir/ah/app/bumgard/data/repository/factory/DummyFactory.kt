@@ -1,4 +1,4 @@
-package ir.ah.app.bumgard.data.repository.search.factory
+package ir.ah.app.bumgard.data.repository.factory
 
 
 import ir.ah.app.bumgard.*

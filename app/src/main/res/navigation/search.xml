@@ -18,6 +18,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_searchFragment_to_cityFragment"
+            app:destination="@id/cityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <include app:graph="@navigation/auth" />
     <fragment
@@ -49,4 +57,13 @@
         tools:layout="@layout/fragment_filter"
         android:name="ir.ah.app.bumgard.ui.search.filter.FilterFragment"
         android:label="FilterFragment" />
+    <fragment
+        android:id="@+id/cityFragment"
+        tools:layout="@layout/fragment_city"
+        android:name="ir.ah.app.bumgard.ui.city.CityFragment"
+        android:label="CityFragment" >
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
 </navigation>

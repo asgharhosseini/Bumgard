@@ -5,6 +5,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ir.ah.app.bumgard.BuildConfig
 import ir.ah.app.bumgard.data.remote.*
+import ir.ah.app.bumgard.data.repository.city.*
+import ir.ah.app.bumgard.data.repository.city.dummy.*
 import ir.ah.app.bumgard.data.repository.search.*
 import ir.ah.app.bumgard.data.repository.search.dummy.*
 
@@ -18,6 +20,10 @@ object RepositoryModule {
     @Singleton
     internal fun provideSearchRepository(apiService: ApiService): SearchRepository =
         if (BuildConfig.DEMO_MODE) DummySearchRepository() else SearchRepositoryImpl(apiService)
+    @Provides
+    @Singleton
+    internal fun provideCityRepository(apiService: ApiService): CityRepository =
+        if (BuildConfig.DEMO_MODE) DummyCityRepository() else CityRepositoryImpl(apiService)
 
 
 }

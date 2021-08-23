@@ -15,7 +15,7 @@ import dagger.hilt.android.*
 import ir.ah.app.bumgard.R
 import ir.ah.app.bumgard.base.*
 import ir.ah.app.bumgard.data.model.*
-import ir.ah.app.bumgard.data.repository.search.factory.DummyFactory.facilitiesList
+import ir.ah.app.bumgard.data.repository.factory.DummyFactory.facilitiesList
 import ir.ah.app.bumgard.databinding.*
 import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.other.wrapper.*

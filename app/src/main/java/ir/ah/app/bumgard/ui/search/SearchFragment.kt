@@ -61,8 +61,12 @@ class SearchFragment : BaseFragment<SearchViewModel>(
     }
 
     private fun onItemClick() {
-        topCityAdapter.setOnItemClickListener { }
-        popularCityAdapter.setOnItemClickListener { }
+        topCityAdapter.setOnItemClickListener { city->
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCityFragment(city.name))
+        }
+        popularCityAdapter.setOnItemClickListener { city->
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCityFragment(city.name))
+        }
         searchAdapter.setOnItemClickListener { }
         binding.ivDown.setOnClickListener {
             if (vm.guest.value != 1) {
