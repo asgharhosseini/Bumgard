@@ -20,7 +20,7 @@ class CityViewModel @Inject constructor(
     private val hotelInCityChanel = Channel<Resource<HotelResponse>>()
     val hotelInCity = hotelInCityChanel.receiveAsFlow()
 
-    private fun getSearch() =
+    private fun getCity() =
         doInMain {
             hotelInCityChanel.send(Resource.Loading)
 
