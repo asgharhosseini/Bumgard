@@ -7,7 +7,7 @@ import ir.ah.app.bumgard.other.wrapper.*
 import javax.inject.*
 
 class CityRepositoryImpl @Inject constructor(private val apiService: ApiService)  :CityRepository {
-    override suspend fun getSearch(cityName: String): Resource<HotelResponse> =
+    override suspend fun getCity(cityName: String): Resource<HotelResponse> =
         safeApiCall { apiService.getSearch(cityName) }
 
 

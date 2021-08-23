@@ -9,7 +9,7 @@ import ir.ah.app.bumgard.data.repository.factory.DummyFactory.DummyHotelResponse
 import ir.ah.app.bumgard.other.wrapper.*
 
 class DummyCityRepository :CityRepository {
-    override suspend fun getSearch(cityName: String): Resource<HotelResponse> =
+    override suspend fun getCity(cityName: String): Resource<HotelResponse> =
         Resource.Success(DummyHotelResponse)
 
 
