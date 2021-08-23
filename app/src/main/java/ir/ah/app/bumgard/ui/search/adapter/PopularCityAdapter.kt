@@ -31,7 +31,13 @@ class PopularCityAdapter @Inject constructor(private val glide: RequestManager) 
     override fun onBindViewHolder(holder: PopularCityViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.bind(currentItem)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { click ->
+                click(currentItem)
+            }
+        }
     }
+
 
 
 }
