@@ -56,4 +56,21 @@ interface ApiService {
         pageSize: Int = EndPoints.itemsCountPerPage
     ): Response<FacilitiesResponse>
 
+
+    @POST(EndPoints.getSearchRequest)
+    @FormUrlEncoded
+    suspend fun getCity(
+        @Field("cityName")
+        cityName: String,
+        @Field("page")
+        page: Int=1,
+        @Field("apiKey")
+        apiKey: String="",
+        @Field("itemsCountPerPage")
+        pageSize: Int = EndPoints.itemsCountPerPage
+    ): Response<HotelResponse>
+
+
+
+
 }
