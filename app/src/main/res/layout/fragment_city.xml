@@ -20,6 +20,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:background="@drawable/background_color"
+            app:titleTextColor="@color/white"
+            app:titleCentered="true"
             android:layout_height="?attr/actionBarSize">
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -30,14 +32,14 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:itemCount="20"
-        tools:listitem="@layout/item_hotel_in_city"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        tools:itemCount="20"
+        tools:listitem="@layout/item_hotel_in_city" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
