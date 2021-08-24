@@ -28,6 +28,20 @@ data class Hotel(
     var price: String ,
     @Json(name = "price")
     var spaceToCentrum: Int ,
+    @Json(name = "locationName")
+    var locationName: String? ,
+    @Json(name = "about")
+    var about: String? ,
+    @Json(name = "ratings")
+    var ratings: Ratings ,
+    @Json(name = "facilities")
+    var facilities: List<Facilities> ,
+    @Json(name = "comment")
+    var comment: List<Comment> ,
+    @Json(name = "photos")
+    var photos: List<Photos> ,
+
+
 
 
 )
