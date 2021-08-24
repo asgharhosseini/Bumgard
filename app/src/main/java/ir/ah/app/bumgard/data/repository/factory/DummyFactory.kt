@@ -75,6 +75,44 @@ object DummyFactory {
         "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805193-343288.jpg",
     )
 
+    val facilitiesList = listOf(
+        Facilities(0,"Wifi", R.drawable.ic_wifi),
+        Facilities(1,"Food",  R.drawable.ic_food),
+        Facilities(2,"Pet", R.drawable.ic_pet),
+        Facilities(3,"Parking",  R.drawable.ic_parking),
+    )
+    val commentList = listOf(
+        Comment(1,"Liam", "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at." +
+                " Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+        Comment(2,"Emma",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-10.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+        Comment(3,"Oliver",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-8.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+        Comment(4,"Liam", "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at." +
+                " Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+        Comment(5,"Emma",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-10.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+        Comment(6,"Oliver",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-8.jpg",
+        "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."),
+    )
+
+        val listHotelPhoto= listOf(
+            Photos(1,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805193-343288.jpg"),
+            Photos(2,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805192-474851.jpg"),
+            Photos(3,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805181-399101.jpg"),
+            Photos(4,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-13288344-418703.jpg"),
+            Photos(5,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805196-364849.jpg"),
+            Photos(6,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805195-976359.jpg"),
+            Photos(7,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-13288345-355399.jpg"),
+            Photos(8,"https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805183-284571.jpg"),
+        )
+
 
     fun hotelListGenerator(): List<Hotel> {
         val hotelList: ArrayList<Hotel> = arrayListOf()
@@ -87,7 +125,15 @@ object DummyFactory {
                  round( Random.nextDouble(0.5, 5.0),2),
                 Random.nextInt(30, 70),
                 "  $ ${Random.nextInt(60, 270)}",
-                Random.nextInt(2, 6)
+                Random.nextInt(2, 6),null,null,
+                Ratings(
+                    round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+                    round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+                    round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+                    round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+                ),
+                facilitiesList,commentList,listHotelPhoto
+
 
             )
             hotelList.add(hotel)
@@ -105,12 +151,7 @@ object DummyFactory {
         return cityList
     }
 
-    val facilitiesList = listOf(
-        Facilities(0,"Wifi", R.drawable.ic_wifi),
-        Facilities(1,"Food",  R.drawable.ic_food),
-        Facilities(2,"Pet", R.drawable.ic_pet),
-        Facilities(3,"Parking",  R.drawable.ic_parking),
-    )
+
 
     val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
     val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
