@@ -26,6 +26,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_searchFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <include app:graph="@navigation/auth" />
     <fragment
@@ -65,5 +73,25 @@
         <argument
             android:name="cityName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_cityFragment_to_hotelDetailFragment"
+            app:destination="@id/hotelDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelDetailFragment"
+        tools:layout="@layout/fragment_hotel_detail"
+        android:name="ir.ah.app.bumgard.ui.hotel.HotelDetailFragment"
+        android:label="HotelDetailFragment" >
+        <argument
+            android:name="hotelName"
+            app:argType="string" />
+        <argument
+            android:name="hotelId"
+            app:argType="integer" />
     </fragment>
 </navigation>
