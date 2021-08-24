@@ -80,7 +80,7 @@ interface ApiService {
         apiKey: String="",
         @Field("itemsCountPerPage")
         pageSize: Int = EndPoints.itemsCountPerPage
-    ): Response<HotelResponse>
+    ): Response<HotelDetailResponse>
 
 
 
