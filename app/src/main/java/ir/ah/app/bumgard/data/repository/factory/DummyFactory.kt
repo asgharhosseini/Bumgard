@@ -153,9 +153,29 @@ object DummyFactory {
 
 
 
+
+
     val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
     val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
     val DummyFacilitiesResponse = FacilitiesResponse(facilitiesList, 1, 1, 1)
+    val DummyHotelDetailResponse =HotelDetailResponse(Hotel(1, 1, 1,
+        hotelName[1],
+        hotelImage[1],
+        null, null,
+        round( Random.nextDouble(0.5, 5.0),2),
+        Random.nextInt(30, 70),
+        "  $ ${Random.nextInt(60, 270)}",
+        Random.nextInt(2, 6),null,null,
+        Ratings(
+            round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+            round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+            round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+            round( Random.nextDouble(0.5, 5.0),2).toFloat(),
+        ),
+        facilitiesList,commentList,listHotelPhoto
+
+    ), 1, 1, 1)
+
 
 
 }
