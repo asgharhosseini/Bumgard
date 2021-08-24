@@ -69,6 +69,18 @@ interface ApiService {
         @Field("itemsCountPerPage")
         pageSize: Int = EndPoints.itemsCountPerPage
     ): Response<HotelResponse>
+    @POST(EndPoints.getSearchRequest)
+    @FormUrlEncoded
+    suspend fun getHotelDetail(
+        @Field("hotelId")
+        hotelId: Int,
+        @Field("page")
+        page: Int=1,
+        @Field("apiKey")
+        apiKey: String="",
+        @Field("itemsCountPerPage")
+        pageSize: Int = EndPoints.itemsCountPerPage
+    ): Response<HotelResponse>
 
 
 
