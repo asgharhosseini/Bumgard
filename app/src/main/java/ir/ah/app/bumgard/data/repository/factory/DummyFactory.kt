@@ -179,14 +179,14 @@ object DummyFactory {
 
         )
 
-        fun listLanguageGenerator(): List<Languages> {
-       return listOf(
-                listLanguages.get(Random.nextInt(0, 9)),
-                listLanguages.get(Random.nextInt(0, 9)),
-                listLanguages.get(Random.nextInt(0, 9)),
-                listLanguages.get(Random.nextInt(0, 9)),
-            )
-        }
+    fun listLanguageGenerator(): List<Languages> {
+        return listOf(
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+        )
+    }
 
     fun hotelListGenerator(): List<Hotel> {
         val hotelList: ArrayList<Hotel> = arrayListOf()
@@ -246,7 +246,7 @@ object DummyFactory {
                 round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
                 round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
             ),
-            facilitiesList, commentList, listHotelPhoto,listLanguageGenerator()
+            facilitiesList, commentList, listHotelPhoto, listLanguageGenerator()
 
         ), 1, 1, 1
     )
