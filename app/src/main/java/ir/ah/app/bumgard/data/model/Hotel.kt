@@ -40,6 +40,8 @@ data class Hotel(
     var comment: List<Comment> ,
     @Json(name = "photos")
     var photos: List<Photos> ,
+    @Json(name = "photos")
+    var languages: List<Languages> ,
 
 
 
