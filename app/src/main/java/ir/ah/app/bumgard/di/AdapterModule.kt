@@ -23,6 +23,8 @@ object AdapterModule {
     @Provides
     fun provideHotelInCityAdapter(glide: RequestManager) = HotelInCityAdapter(glide)
     @Provides
+    fun provideHotelPhotosAdapter(glide: RequestManager) = HotelPhotosAdapter(glide)
+    @Provides
     fun provideFacilitiesAdapter() = FacilitiesAdapter()
     @Provides
     fun provideHotelFacilitiesAdapter() = HotelFacilitiesAdapter()
