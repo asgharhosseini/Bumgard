@@ -33,24 +33,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <ImageView
+                    android:id="@+id/app_bar_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/hotel_image" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:background="@drawable/background_filter_button"
                     android:gravity="center"
-                    android:paddingTop="4dp"
                     android:orientation="vertical"
                     android:paddingStart="32dp"
+                    android:paddingTop="4dp"
                     android:paddingEnd="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline6"
                     app:layout_constraintEnd_toEndOf="parent">
 
                     <TextView
                         android:id="@+id/tvHotelPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$ 200"
+                        tools:text="$ 200"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -58,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Per Night"
+                        android:text="@string/per_night"
                         android:textSize="10sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -68,8 +86,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Rose Garden Hotel"
-                    android:textSize="16sp"
+                    tools:text="Rose Garden Hotel"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
                     app:layout_constraintBottom_toTopOf="@+id/tvLocationHotel"
                     app:layout_constraintStart_toStartOf="@+id/imageView2" />
 
@@ -78,7 +97,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="San Bruno, California"
+                    tools:text="San Bruno, California"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -91,20 +111,20 @@
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/materialRatingBar2"
                     app:layout_constraintStart_toStartOf="@+id/materialRatingBar2"
-                    app:src="@drawable/ic_location" />
+                    app:srcCompat="@drawable/ic_location_detail"
+                    android:contentDescription="@string/icon_hotel_location" />
 
                 <me.zhanghai.android.materialratingbar.MaterialRatingBar
                     android:id="@+id/materialRatingBar2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
                     android:isIndicator="true"
                     android:maxHeight="24dp"
                     android:minHeight="24dp"
                     android:rating="2"
                     android:stepSize="0.01"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline6"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints" />
 
@@ -113,21 +133,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="(8.5)"
+                    tools:text="(8.5)"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/materialRatingBar2"
                     app:layout_constraintStart_toEndOf="@+id/materialRatingBar2"
                     app:layout_constraintTop_toTopOf="@+id/materialRatingBar2" />
-
-                <ImageView
-                    android:id="@+id/app_bar_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,7 +198,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewFacilities"
                 tools:ignore="MissingConstraints">
 
                 <LinearLayout
@@ -216,7 +226,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_calendar" />
+                            android:src="@drawable/ic_calendar"
+                            android:contentDescription="@string/check_in_date" />
 
                         <TextView
                             android:id="@+id/txt_dateDeparture"
@@ -246,7 +257,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_calendar" />
+                            android:src="@drawable/ic_calendar"
+                            android:contentDescription="@string/check_out_date" />
 
                         <TextView
                             android:id="@+id/txt_dateReturn"
@@ -281,7 +293,8 @@
                         android:layout_marginEnd="16dp"
                         android:layout_weight="0.1"
                         android:backgroundTint="@color/purple_200"
-                        android:src="@drawable/ic_user" />
+                        android:src="@drawable/ic_user"
+                        android:contentDescription="@string/guest" />
 
                     <ImageView
                         android:id="@+id/iv_down"
@@ -291,7 +304,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="0.1"
-                        android:src="@drawable/ic_arrow_down" />
+                        android:src="@drawable/ic_arrow_down"
+                        android:contentDescription="@string/icon_arrow_down" />
 
                     <ImageView
                         android:id="@+id/iv_up"
@@ -300,7 +314,8 @@
                         android:layout_gravity="center|end"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="0.1"
-                        android:src="@drawable/ic_arrow_up" />
+                        android:src="@drawable/ic_arrow_up"
+                        android:contentDescription="@string/icon_arrow_up" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_countGuest"
@@ -311,7 +326,7 @@
                         android:background="@android:color/transparent"
                         android:enabled="false"
                         android:inputType="numberDecimal"
-                        android:text="1" />
+                        android:text="@string/_1" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -395,11 +410,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/location"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                 />
 
             <TextView
                 android:id="@+id/tvRateLocation"
@@ -407,7 +423,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="(8.5)"
+                tools:text="(8.5)"
                 app:layout_constraintBottom_toBottomOf="@+id/progressBarLocation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -419,7 +435,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/cleaning"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
@@ -431,7 +447,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="(8.5)"
+                tools:text="(8.5)"
                 app:layout_constraintBottom_toBottomOf="@+id/progressBarCleaning"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -443,7 +459,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/service"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
@@ -455,7 +471,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="(8.5)"
+                tools:text="(8.5)"
                 app:layout_constraintBottom_toBottomOf="@+id/progressBarService"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -467,11 +483,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/price"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/textView19"
+                />
 
             <TextView
                 android:id="@+id/tvRatePrice"
@@ -479,7 +496,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="(8.5)"
+                tools:text="(8.5)"
                 app:layout_constraintBottom_toBottomOf="@+id/progressBarPrice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -503,6 +520,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:maxLines="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView14"
@@ -565,7 +583,7 @@
                 app:layout_constraintGuide_percent="0.85" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/recyclerViewFacilities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -657,7 +675,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_allOrder"
+        android:id="@+id/btn_selectRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
