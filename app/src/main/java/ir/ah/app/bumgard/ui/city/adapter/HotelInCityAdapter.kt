@@ -36,6 +36,11 @@ class HotelInCityAdapter @Inject constructor(private val glide: RequestManager) 
     override fun onBindViewHolder(holder: HotelInCityViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.bind(currentItem)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { click ->
+                click(currentItem)
+            }
+        }
     }
 
 

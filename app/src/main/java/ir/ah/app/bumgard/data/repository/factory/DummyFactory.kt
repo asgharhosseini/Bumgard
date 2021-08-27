@@ -75,19 +75,141 @@ object DummyFactory {
         "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805193-343288.jpg",
     )
 
+    val facilitiesList = listOf(
+        Facilities(0, "Wifi", R.drawable.ic_wifi),
+        Facilities(1, "Food", R.drawable.ic_food),
+        Facilities(2, "Pet", R.drawable.ic_pet),
+        Facilities(3, "Parking", R.drawable.ic_parking),
+    )
+    val commentList = listOf(
+        Comment(
+            1,
+            "Liam",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at." +
+                    " Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+        Comment(
+            2, "Emma",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-10.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+        Comment(
+            3, "Oliver",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-8.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+        Comment(
+            4,
+            "Liam",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at." +
+                    " Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+        Comment(
+            5, "Emma",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-10.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+        Comment(
+            6, "Oliver",
+            "https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-8.jpg",
+            "Curabitur vehicula vehicula maximus nun integer commodo efficitur tortor fermentum at. Etiam feugiat eleifend nunc, non tortor malesuada leo enam maximus vitae, integer tristique."
+        ),
+    )
+
+    val listHotelPhoto = listOf(
+        Photos(1, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805193-343288.jpg"),
+        Photos(2, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805192-474851.jpg"),
+        Photos(3, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805181-399101.jpg"),
+        Photos(4, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-13288344-418703.jpg"),
+        Photos(5, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805196-364849.jpg"),
+        Photos(6, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805195-976359.jpg"),
+        Photos(7, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-13288345-355399.jpg"),
+        Photos(8, "https://content.r9cdn.net/rimg/himg/b0/68/6d/revato-7180-5805183-284571.jpg"),
+    )
+
+    val listLanguages = listOf(
+        Languages(
+            0,
+            "Spanish",
+            "https://www.countryflags.com/wp-content/uploads/spain-flag-png-large.png"
+        ),
+        Languages(
+            1,
+            "English",
+            "https://www.countryflags.com/wp-content/uploads/england-flag-jpg-xl-1536x922.jpg"
+        ),
+        Languages(2, "Portuguese", "https://cdn.countryflags.com/thumbs/portugal/flag-800.png"),
+        Languages(
+            3,
+            "Russian",
+            "https://www.countryflags.com/wp-content/uploads/russia-flag-png-large.png"
+        ),
+        Languages(
+            4,
+            "Japanese",
+            "https://www.countryflags.com/wp-content/uploads/japan-flag-png-large.png"
+        ),
+        Languages(
+            5,
+            "Turkish",
+            "https://www.countryflags.com/wp-content/uploads/turkey-flag-png-large.png"
+        ),
+        Languages(
+            6,
+            "Korean",
+            "https://www.countryflags.com/wp-content/uploads/south-korea-flag-png-large.png"
+        ),
+        Languages(
+            7,
+            "French",
+            "https://www.countryflags.com/wp-content/uploads/france-flag-png-large.png"
+        ),
+        Languages(
+            8,
+            "German",
+            "https://www.countryflags.com/wp-content/uploads/germany-flag-png-large.png"
+        ),
+        Languages(
+            9,
+            "Italian",
+            "https://www.countryflags.com/wp-content/uploads/italy-flag-png-large.png"
+        ),
+
+        )
+    val aboutHotel="Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mussa Donec egestas neque lacus, vel pharetra no libero iaculis sed. In vel feugiat metus.Sed varius ex ut consectetur mollis in pulvin  aliquet scelerisque mi, non convallis velit no pulvinar eu. Suspendisse at ultricies arcu, in dignissim odio. Pellentesque maximus ipsum facilisis fermentum. Nunc a varius lacus.Suspendisse neque magna, gravida nec ante ac, viverra elementum enim suspendisse no facilisis viverra nisl, in tempor orci porttitor vel, nunc a elit accumsan, ultricies ipsum at non, rhoncus orci. Vivamus eros massa, nun porttitor et lorem nec, vehicula varius arcu. In nec maximus magna, suscipit molestie at  lectus. Suspendisse fermentum purus sit ac amet tempor dictum.Curabitur ut diam lacinia velit tincidunt enim ullamcorper. Fusce massa arcu, maximus vel interdum eget, rutrum sit amet nulla. Integer a lacinia massa. Sed et sapien eu justo arcu efficitur tincidunt. "
+
+    fun listLanguageGenerator(): List<Languages> {
+        return listOf(
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+            listLanguages.get(Random.nextInt(0, 9)),
+        )
+    }
 
     fun hotelListGenerator(): List<Hotel> {
         val hotelList: ArrayList<Hotel> = arrayListOf()
         for (i in 0..10) {
+
             val hotel = Hotel(
                 i, i, i,
                 hotelName[i],
                 hotelImage[i],
                 null, null,
-                 round( Random.nextDouble(0.5, 5.0),2),
+                round(Random.nextDouble(0.5, 5.0), 2),
                 Random.nextInt(30, 70),
                 "  $ ${Random.nextInt(60, 270)}",
-                Random.nextInt(2, 6)
+                Random.nextInt(2, 6), cityName.get(Random.nextInt(0,9)), aboutHotel,
+                Ratings(
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                ),
+                facilitiesList, commentList, listHotelPhoto,
+                listLanguageGenerator()
 
             )
             hotelList.add(hotel)
@@ -105,16 +227,30 @@ object DummyFactory {
         return cityList
     }
 
-    val facilitiesList = listOf(
-        Facilities(0,"Wifi", R.drawable.ic_wifi),
-        Facilities(1,"Food",  R.drawable.ic_food),
-        Facilities(2,"Pet", R.drawable.ic_pet),
-        Facilities(3,"Parking",  R.drawable.ic_parking),
-    )
 
     val DummyCityResponse = CityResponse(cityListGenerator(), 1, 1, 1)
     val DummyHotelResponse = HotelResponse(hotelListGenerator(), 1, 1, 1)
     val DummyFacilitiesResponse = FacilitiesResponse(facilitiesList, 1, 1, 1)
+    val DummyHotelDetailResponse = HotelDetailResponse(
+        Hotel(
+            1, 1, 1,
+            hotelName[1],
+            hotelImage[1],
+            null, null,
+            round(Random.nextDouble(0.5, 5.0), 2),
+            Random.nextInt(30, 70),
+            "  $ ${Random.nextInt(60, 270)}",
+            Random.nextInt(2, 6), cityName.get(Random.nextInt(0,9)), aboutHotel,
+            Ratings(
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+            ),
+            facilitiesList, commentList, listHotelPhoto, listLanguageGenerator()
+
+        ), 1, 1, 1
+    )
 
 
 }

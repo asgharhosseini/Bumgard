@@ -7,6 +7,8 @@ import ir.ah.app.bumgard.BuildConfig
 import ir.ah.app.bumgard.data.remote.*
 import ir.ah.app.bumgard.data.repository.city.*
 import ir.ah.app.bumgard.data.repository.city.dummy.*
+import ir.ah.app.bumgard.data.repository.hotel.*
+import ir.ah.app.bumgard.data.repository.hotel.dummy.*
 import ir.ah.app.bumgard.data.repository.search.*
 import ir.ah.app.bumgard.data.repository.search.dummy.*
 
@@ -24,6 +26,10 @@ object RepositoryModule {
     @Singleton
     internal fun provideCityRepository(apiService: ApiService): CityRepository =
         if (BuildConfig.DEMO_MODE) DummyCityRepository() else CityRepositoryImpl(apiService)
+    @Provides
+    @Singleton
+    internal fun provideHotelRepository(apiService: ApiService): HotelRepository =
+        if (BuildConfig.DEMO_MODE) DummyHotelRepository() else HotelRepositoryImpl(apiService)
 
 
 }
