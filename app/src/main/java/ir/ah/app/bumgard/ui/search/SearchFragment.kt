@@ -67,7 +67,11 @@ class SearchFragment : BaseFragment<SearchViewModel>(
         popularCityAdapter.setOnItemClickListener { city->
             findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToCityFragment(city.name))
         }
-        searchAdapter.setOnItemClickListener { }
+        searchAdapter.setOnItemClickListener {
+            searchAdapter.setOnItemClickListener {
+                findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToHotelDetailFragment(it.name,it.id))
+            }
+        }
         binding.ivDown.setOnClickListener {
             if (vm.guest.value != 1) {
                 vm.guest.value -= 1

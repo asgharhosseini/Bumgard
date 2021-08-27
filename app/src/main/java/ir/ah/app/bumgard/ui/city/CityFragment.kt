@@ -13,6 +13,7 @@ import ir.ah.app.bumgard.other.*
 import ir.ah.app.bumgard.other.util.Constance.TAG
 import ir.ah.app.bumgard.other.wrapper.*
 import ir.ah.app.bumgard.ui.city.adapter.*
+import ir.ah.app.bumgard.ui.search.*
 import kotlinx.coroutines.flow.*
 import javax.inject.*
 
@@ -61,6 +62,14 @@ class CityFragment : BaseFragment<CityViewModel>(
             }
         }
         setUpAdapter()
+        onItemClick()
+
+    }
+
+    private fun onItemClick() {
+        hotelInCityAdapter.setOnItemClickListener {
+            findNavController().navigate(CityFragmentDirections.actionCityFragmentToHotelDetailFragment(it.name,it.id))
+        }
 
     }
 
