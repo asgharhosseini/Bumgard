@@ -5,11 +5,11 @@ import com.squareup.moshi.*
 @JsonClass(generateAdapter = true)
 data class Ratings(
     @Json(name = "Location")
-    val Location:Float,
+    val location:Int,
     @Json(name = "Cleaning")
-    val Cleaning:Float,
+    val cleaning:Int,
     @Json(name = "Service")
-    val Service:Float,
+    val service:Int,
     @Json(name = "Price")
-    val Price:Float,
+    val price:Int,
 )
