@@ -46,9 +46,12 @@ class HotelFacilitiesAdapter :
 
     override fun onBindViewHolder(holder: FacilitiesViewHolder, position: Int) {
         val currentItem = getItem(position)
-
             holder.bind(currentItem)
-
+            holder.itemView.setOnClickListener {
+            onItemClickListener?.let { click ->
+                click(currentItem)
+            }
+        }
     }
 
 

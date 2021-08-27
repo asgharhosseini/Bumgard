@@ -29,7 +29,7 @@ class HotelLanguagesAdapter @Inject constructor(private val glide: RequestManage
         fun bind(languages: Languages) {
             binding.apply {
                 glide.load(languages.image).into(binding.imageViewLanguage)
-                binding.languageName.text=languages.name
+                binding.languageName.text = languages.name
 
             }
         }
@@ -47,7 +47,12 @@ class HotelLanguagesAdapter @Inject constructor(private val glide: RequestManage
     override fun onBindViewHolder(holder: HotelLanguagesViewHolder, position: Int) {
         val currentItem = getItem(position)
 
-            holder.bind(currentItem)
+        holder.bind(currentItem)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { click ->
+                click(currentItem)
+            }
+        }
 
     }
 
