@@ -27,6 +27,8 @@ object AdapterModule {
     @Provides
     fun provideHotelCommentAdapter(glide: RequestManager) = HotelCommentAdapter(glide)
     @Provides
+    fun provideHotelLanguagesAdapter(glide: RequestManager) = HotelLanguagesAdapter(glide)
+    @Provides
     fun provideFacilitiesAdapter() = FacilitiesAdapter()
     @Provides
     fun provideHotelFacilitiesAdapter() = HotelFacilitiesAdapter()
