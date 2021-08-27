@@ -61,4 +61,8 @@
     <string name="photos">PHOTOS</string>
     <string name="comments">COMMENTS</string>
     <string name="languages">LANGUAGES</string>
+    <string name="hotel_image">hotel image</string>
+    <string name="icon_hotel_location">icon hotel location</string>
+    <string name="icon_arrow_down">icon arrow down</string>
+    <string name="icon_arrow_up">icon arrow up</string>
 </resources>
