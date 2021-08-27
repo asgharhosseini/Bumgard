@@ -178,6 +178,7 @@ object DummyFactory {
         ),
 
         )
+    val aboutHotel="Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mussa Donec egestas neque lacus, vel pharetra no libero iaculis sed. In vel feugiat metus.Sed varius ex ut consectetur mollis in pulvin  aliquet scelerisque mi, non convallis velit no pulvinar eu. Suspendisse at ultricies arcu, in dignissim odio. Pellentesque maximus ipsum facilisis fermentum. Nunc a varius lacus.Suspendisse neque magna, gravida nec ante ac, viverra elementum enim suspendisse no facilisis viverra nisl, in tempor orci porttitor vel, nunc a elit accumsan, ultricies ipsum at non, rhoncus orci. Vivamus eros massa, nun porttitor et lorem nec, vehicula varius arcu. In nec maximus magna, suscipit molestie at  lectus. Suspendisse fermentum purus sit ac amet tempor dictum.Curabitur ut diam lacinia velit tincidunt enim ullamcorper. Fusce massa arcu, maximus vel interdum eget, rutrum sit amet nulla. Integer a lacinia massa. Sed et sapien eu justo arcu efficitur tincidunt. "
 
     fun listLanguageGenerator(): List<Languages> {
         return listOf(
@@ -200,12 +201,12 @@ object DummyFactory {
                 round(Random.nextDouble(0.5, 5.0), 2),
                 Random.nextInt(30, 70),
                 "  $ ${Random.nextInt(60, 270)}",
-                Random.nextInt(2, 6), null, null,
+                Random.nextInt(2, 6), cityName.get(Random.nextInt(0,9)), aboutHotel,
                 Ratings(
-                    round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                    round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                    round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                    round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                    (Random.nextDouble(0.5, 5.0)*10).toInt(),
                 ),
                 facilitiesList, commentList, listHotelPhoto,
                 listLanguageGenerator()
@@ -239,12 +240,12 @@ object DummyFactory {
             round(Random.nextDouble(0.5, 5.0), 2),
             Random.nextInt(30, 70),
             "  $ ${Random.nextInt(60, 270)}",
-            Random.nextInt(2, 6), null, null,
+            Random.nextInt(2, 6), cityName.get(Random.nextInt(0,9)), aboutHotel,
             Ratings(
-                round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
-                round(Random.nextDouble(0.5, 5.0), 2).toFloat(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
+                (Random.nextDouble(0.5, 5.0)*10).toInt(),
             ),
             facilitiesList, commentList, listHotelPhoto, listLanguageGenerator()
 
